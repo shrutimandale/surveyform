@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Survey Form</title>
+</head>
+
+<body>
+    <div class="container ">
+        <header class="header">
+            <h1 id="title" style="color: rgba(4, 4, 4, 0.8);">
+                Survey Form
+            </h1>
+            <p id="description">
+                Thank you for taking time to help us improve
+            </p>
+        </header>
+        <form action="insert.php" method="POST"> 
+        	<!--onsubmit="return mailchk() && nameval()" id="survey-form">-->
+
+            <!-- Text section -->
+            <div class="form-group">
+       
+                        
+               <label for="name"><p id = "quest"> Name*</p></label>
+                <input type="text" name="name" id="name" class="formControl" placeholder="Enter your name" onblur="nameval()" required>
+                <span id="nam"></span>
+
+            </div>
+            <!-- end of text section -->
+
+
+            <!-- Type Email section -->
+            <div class="form-group">
+
+                <label for="email"> <p id = "quest"> Email* </p></label>
+                <input class="formControl" type="text" name="email" id="mail" placeholder="Enter your Email" onblur="mailchk()" required>
+                        <span id="msg"></span>
+            </div>
+            <!-- end of Email section -->
+
+            <!-- Type Number section -->
+            <div class="form-group">
+                <label for="phone"> <p id = "quest" >Phone Number*</p></label>
+                <input type="number" name="phone" id="phone" class="formControl" placeholder="Enter your phone number" onblur = "phonenumber()"required>
+                <span id="num"></span>
+            </div>
+            <!-- end of Number section -->
+
+            <!-- select section -->
+            <div class="form-group">
+                <p id="quest">Branch*</p>
+                <select name="branch" required id="dropdown" class="formControl">
+                    <option value disabled selected >Select</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Electronics & Telecommunication">Electronics & Telecommunication</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Electrical Engineering">Electrical Engineering</option>
+                </select>
+            </div>
+            <!-- end of select section -->
+
+            <!-- select section -->
+            <div class="form-group">
+                <p id="quest">Year*</p>
+                <select name="year" required id="dropdown" class="formControl">
+                    <option value disabled selected >Select</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <!-- end of select section -->
+
+            <!--radio section---->
+            <div class="form-group">
+                <p id="quest">Which mode of teaching you prefer?*</p>
+                <label for="">
+                <input type="radio" name="mode" value="Online"
+                class="inputRadio"
+                > Online
+            </label>
+                <label for="">
+                <input type="radio" name="mode" value="Offline"
+                class="inputRadio"
+                >Offline
+            </label>
+            <label for="">
+                <input type="radio" name="mode" value="Hybrid"
+                class="inputRadio"
+                >Hybrid
+            </label>
+              <!-- end of radio section --> 
+            <br>
+            <div class="form-group">
+                <p id="quest">Have you developed yourself during lockdown?*</p>
+                <label for="">
+                <input type="radio" name="development" value="Y"
+                class="inputRadio"
+                > Yes
+            </label>
+                <label for="">
+                <input type="radio" name="development" value="N"
+                class="inputRadio"
+                >No
+            </label>
+
+
+
+            <div class="form-group">
+                <p id="quest">Have you benefitted more from online learning?*</p>
+                <label for="">
+                <input type="radio" name="benefit" value="Yes"
+                class="inputRadio"
+                > Yes
+            </label>
+                <label for="">
+                <input type="radio" name="benefit" value="No"
+                class="inputRadio"
+                >No
+            </label>
+
+            <div class="form-group">
+                <p id="quest">Which type of Online learning content do you like more?*</p>
+                <label for="">
+                <input type="radio" name="content" value="Recorded Videos"
+                class="inputRadio"
+                > Recorded Videos
+            </label>
+                <label for="">
+                <input type="radio" name="content" value="Live Classes"
+                class="inputRadio"
+                >Live Classes
+            </label>
+
+            <div class="form-group">
+                <p id="quest">Which Education System is more costly?*</p>
+                <label for="">
+                <input type="radio" name="cost" value="On"
+                class="inputRadio"
+                > Online
+            </label>
+                <label for="">
+                <input type="radio" name="cost" value="Off"
+                class="inputRadio"
+                >Offline
+            </label>
+
+                <!-- Textarea section -->
+                <div class="form-group">
+                    <p id="quest">Any Suggestions*</p>
+                    <textarea name="suggestion" cols="30" rows="5" id="feedback" class="textarea" placeholder="Enter your feedback here..."></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="submit" name= "save" class="btn">Submit</button>
+                </div>
+            </tr>
+        </div>
+    </form>
+</div>
+         <script>
+        function nameval(){
+            var nam = document.getElementById('name').value;
+            var st = document.getElementById('nam');
+            if(nam.length==0)
+            {
+                st.innerHTML="*Name can't be blank";
+                st.style.color="red";
+                st.style.fontSize="12px";
+                return false;
+            }
+            else if(!nam.match(/^[a-zA-Z]+$/))
+            {
+                st.innerHTML="*Name can't have a number or space";
+                st.style.color="red";
+                st.style.fontSize="12px";
+                return false;
+            }
+            else if(nam.length<3 && nam.length>0)
+            {
+            st.innerHTML="*Must contain atleast three characters";
+            st.style.color="red";
+            st.style.fontSize="12px";
+            return false;
+            }
+            else{
+                st.innerHTML="";
+                return true;
+            }
+            
+            
+        }
+
+        function mailchk()
+        {
+            var mail = document.getElementById('mail').value;
+            var sty = document.getElementById('msg');
+            var atpos=mail.indexOf("@");
+            var dotpos=mail.lastIndexOf(".");
+            if (atpos<1 || dotpos<atpos+2 || dotpos+2>=mail.length)
+            {
+                sty.innerHTML="*Please enter a valid email";
+                sty.style.color="red";
+                sty.style.fontSize="12px";
+                return false;
+            }
+            else{
+                sty.innerHTML="";
+                return true;
+            }
+        }
+ function phonenumber()
+{
+	var num = document.getElementById('phone').value;
+    var stk = document.getElementById('num');
+ /*var phoneno = /^\d{10}$/;*/	
+  if(num.match (/^\d{10}$/))
+        {
+     		stk.innerHTML="";
+     		return true;
+        }
+        else
+        {
+        stk.innerHTML="*Please enter a valid phone number";
+                stk.style.color="red";
+                stk.style.fontSize="12px";
+                return false;
+        }
+}
+        
+    </script>
+</body>
+</html>
+
